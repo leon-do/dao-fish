@@ -11,7 +11,9 @@ contract FishingLicense is ERC20, ERC20Burnable, Ownable, ERC20Permit, ERC20Vote
     constructor()
         ERC20("FishingLicense", "FISHINGLICENSE")
         ERC20Permit("FishingLicense")
-    {}
+    {
+        _mint(msg.sender, 100);
+    }
 
     function mint(address to, uint256 amount) public onlyOwner {
         _mint(to, amount);
