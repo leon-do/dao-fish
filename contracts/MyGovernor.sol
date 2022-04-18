@@ -6,11 +6,12 @@ import "@openzeppelin/contracts/governance/extensions/GovernorCountingSimple.sol
 import "@openzeppelin/contracts/governance/extensions/GovernorVotes.sol";
 import "@openzeppelin/contracts/governance/extensions/GovernorVotesQuorumFraction.sol";
 
-contract TheCommons is Governor, GovernorCountingSimple, GovernorVotes, GovernorVotesQuorumFraction {
+contract MyGovernor is Governor, GovernorCountingSimple, GovernorVotes, GovernorVotesQuorumFraction {
+    
     constructor(IVotes _token)
-        Governor("TheCommons")
+        Governor("MyGovernor")
         GovernorVotes(_token)
-        GovernorVotesQuorumFraction(51)
+        GovernorVotesQuorumFraction(4)
     {}
 
     function votingDelay() public pure override returns (uint256) {
@@ -18,7 +19,7 @@ contract TheCommons is Governor, GovernorCountingSimple, GovernorVotes, Governor
     }
 
     function votingPeriod() public pure override returns (uint256) {
-        return 19636; // 3 days
+        return 1; // 1 block
     }
 
     // The following functions are overrides required by Solidity.
